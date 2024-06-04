@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1679AB;
+      padding: 20px 40px;
+      height: 80px;
+    }
+
+    .navbar h1 {
+      color: #fff;
+      margin: 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 20px;
+      background-color: #2980b9;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: #1c598a;
+    }
+    .employee {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .employee label {
+      flex: 0 0 120px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    .employee span {
+      flex: 1;
+    }
+    .employee input[type="number"] {
+      flex: 0 0 150px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .pay-button {
+      flex: 0 0 80px;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: rgba(255, 0, 0, 1); /* Default red color */
+    }
+    .pay-button:hover {
+      opacity: 0.8;
+    }
+    .pay-button.pay {
+      background-color: rgba(18, 142, 13, 0.984); /* Green color when paid */
+    }
+    .add-employee {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .add-employee input[type="text"],
+    .add-employee input[type="number"] {
+      flex: 0 0 150px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+    .add-employee button {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #007bff;
+    }
+    .add-employee button:hover {
+      opacity: 0.8;
+    }
+
+.container {
+  display: flex;
+  max-width: 1400px;
+  margin: 2px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 55px 20px;
+  border-radius: 10px 0 0 10px;
+}
+
+.options {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      flex: 0 0 33.33%; /* Three icons per line */
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .option a {
+      display: block;
+      padding: 12px;
+      color: #333;
+      width: 50px;
+      margin-left: 12px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: small;
+    }
+
+    .option a i {
+      font-size: 30px; /* Increase icon size */
+      width: 50px; /* Make icons square */
+      height: 50px;
+      text-align: center;
+      
+    }
+
+    .option a:hover {
+      color: #1679AB;
+    }
+
+.main-content {
+  flex: 1;
+  padding: 45px 50px;
+}
+
+.welcome {
+  text-align: center;
+  color: #000;
+}
+
+.welcome h2 {
+  font-size: 36px;
+  color: #1679AB;
+  margin-bottom: 20px;
+}
+
+.welcome p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.main-options {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 20px; /* Space between the buttons */
+  margin-top: 20px; /* Space between the welcome text and buttons */
+}
+
+.m-option {
+  text-align: center;
+  background-color: #2980b9;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  width: 200px; /* Fixed width for consistency */
+}
+.m-option a {
+      display: block;
+      color: #f2f2f2;
+      margin-left: 12px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+.m-option:hover {
+  background-color: #1c598a;
+}
+
+.m-option i {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .total {
+      margin-top: 20px;
+    }
+
+    .challan-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .challan-table th, .challan-table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .challan-table th {
+      background-color: #1679AB;
+      color: #fff;
+
+    }   
+    .selected a {
+    background-color: #514a4a; /* Light grey background */
+    color: #ffffff; /* Black text */
+    border-radius: 5px;
+}
+.selected a {
+  background-color: #514a4a; /* Light grey background */
+  color: #ffffff; /* Black text */
+  border-radius: 5px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Fee Management Portal</h1>
+    <ul>
+      <li><a href="challan_mangement.html">Student Fee Management</a></li>
+      <li><a href="employees_salary_pay.html">Pay Employees</a></li>
+      <li><a href="profit_management.html">Annual Profit Evaluation</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="options">
+        <div class="option">
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </div>
+        <div class="option">
+          <a href="academic_management.html"><i class="fas fa-book"></i> Academic</a>
+        </div>
+        <div class="option">
+          <a href="students_management.html"><i class="fas fa-user-graduate"></i>Students</a>
+        </div>
+        <div class="option">
+          <a href="attendance_management.html"><i class="fas fa-user-clock"></i> Attendance</a>
+        </div>
+        <div class="option">
+          <a href="exam_management.html"><i class="fas fa-clipboard-list"></i> Exam</a>
+        </div>
+        <div class="option selected">
+          <a href="staff_management.html" ><i class="fas fa-users"></i> Employees</a>
+        </div>
+        <div class="option " >
+          <a href="challan_mangement.html" ><i class="fas fa-money-bill"></i> Finance</a>
+        </div>
+        <div class="option">
+          <a href="profit_management.html"><i class="fas fa-chart-line"></i> Profits</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <h2>Employees Salary Pay</h2>
+      <div id="employeeList">
+        <div class="employee">
+          <label for="employee1">Employee 1:</label>
+          <span>Rayan Khan</span> <span>Business Analyst</span>
+          <input type="number" id="salary1" placeholder="Enter salary amount" value="95000">
+          <button class="pay-button pay" onclick="paySalary(1)">Paid</button>
+        </div>
+        <div class="employee">
+          <label for="employee2">Employee 2:</label>
+          <span>Abdullah Farooq</span> <span>Backend Developed</span>
+          <input type="number" id="salary2" placeholder="Enter salary amount" value="50000">
+          <button class="pay-button" onclick="paySalary(2)">Pay</button>
+        </div>
+        <div class="employee">
+          <label for="employee3">Employee 3:</label>
+          <span>Abdul Moiz</span> <span>Full-Stack Developer</span>
+          <input type="number" id="salary3" placeholder="Enter salary amount" value="85000">
+          <button class="pay-button" onclick="paySalary(3)">Pay</button>
+        </div>
+      </div>
+      <div class="add-employee">
+        <input type="text" id="newEmployeeName" placeholder="Employee Name">
+        <input type="text" id="newEmployeeRole" placeholder="Employee Role">
+        <input type="number" id="newEmployeeSalary" placeholder="Salary Amount">
+        <button onclick="addEmployee()">Add Employee</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script>
+    let employeeCount = 3;
+
+    function paySalary(employeeId) {
+      var salaryInput = document.getElementById('salary' + employeeId);
+      var salaryAmount = salaryInput.value;
+      
+      alert('Paid ' + salaryAmount + ' to Employee ' + employeeId);
+      var payButton = document.querySelector('#salary' + employeeId).nextElementSibling;
+      payButton.classList.add('pay');
+      payButton.innerHTML = "Paid";
+      
+      salaryInput.value = '0';
+    }
+
+    function addEmployee() {
+      var employeeName = document.getElementById('newEmployeeName').value;
+      var employeeRole = document.getElementById('newEmployeeRole').value;
+      var employeeSalary = document.getElementById('newEmployeeSalary').value;
+
+      if (employeeName && employeeRole && employeeSalary) {
+        employeeCount++;
+        var employeeList = document.getElementById('employeeList');
+        var newEmployeeDiv = document.createElement('div');
+        newEmployeeDiv.className = 'employee';
+        newEmployeeDiv.innerHTML = `
+          <label for="employee${employeeCount}">Employee ${employeeCount}:</label>
+          <span>${employeeName}</span> <span>${employeeRole}</span>
+          <input type="number" id="salary${employeeCount}" placeholder="Enter salary amount" value="${employeeSalary}">
+          <button class="pay-button" onclick="paySalary(${employeeCount})">Pay</button>
+        `;
+        employeeList.appendChild(newEmployeeDiv);
+
+        document.getElementById('newEmployeeName').value = '';
+        document.getElementById('newEmployeeRole').value = '';
+        document.getElementById('newEmployeeSalary').value = '';
+      } else {
+        alert('Please fill out all fields.');
+      }
+    }
+  </script>
+</body>
+</html>
+

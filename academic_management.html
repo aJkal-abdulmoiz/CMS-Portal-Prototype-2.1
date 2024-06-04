@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, sans-serif;
+   background-color: #f0f0f0;
+ }
+ 
+ .navbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #1679AB;
+   padding: 20px 40px;
+   height: 80px;
+ }
+ 
+ .navbar h1 {
+   color: #fff;
+   margin: 0;
+ }
+ 
+ .navbar ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+ }
+ 
+ .navbar li {
+   margin-left: 20px;
+ }
+ 
+ .navbar a {
+   text-decoration: none;
+   color: #fff;
+   padding: 10px 20px;
+   background-color: #2980b9;
+   border-radius: 5px;
+   transition: background-color 0.3s ease;
+ }
+ 
+ .navbar a:hover {
+   background-color: #1c598a;
+ }
+ 
+ .container {
+   display: flex;
+   max-width: 1400px;
+   margin: 2px auto;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .sidebar {
+   width: 200px;
+   background-color: #f0f0f0;
+   padding: 55px 20px;
+   border-radius: 10px 0 0 10px;
+ }
+ 
+ .options {
+       list-style: none;
+       padding: 0;
+       margin: 0;
+       display: flex;
+       flex-wrap: wrap;
+     }
+ 
+     .option {
+       flex: 0 0 33.33%; /* Three icons per line */
+       margin-bottom: 10px;
+       text-align: center;
+     }
+ 
+     .option a {
+       display: block;
+       padding: 12px;
+       color: #333;
+       width: 50px;
+       margin-left: 12px;
+       text-decoration: none;
+       transition: color 0.3s ease;
+       font-size: small;
+     }
+ 
+     .option a i {
+       font-size: 30px; /* Increase icon size */
+       width: 50px; /* Make icons square */
+       height: 50px;
+       text-align: center;
+       
+     }
+ 
+     .option a:hover {
+       color: #1679AB;
+     }
+ 
+ .main-content {
+   flex: 1;
+   padding: 40px;
+ }
+ 
+ .welcome {
+   text-align: center;
+   color: #000;
+ }
+ 
+ .welcome h2 {
+   font-size: 36px;
+   color: #1679AB;
+   margin-bottom: 20px;
+ }
+ 
+ .welcome p {
+   font-size: 18px;
+   color: #333;
+   line-height: 1.6;
+ }
+ 
+ .main-options {
+   display: flex;
+   justify-content: center; /* Center the buttons horizontally */
+   gap: 20px; /* Space between the buttons */
+   margin-top: 20px; /* Space between the welcome text and buttons */
+ }
+ 
+ .m-option {
+   text-align: center;
+   background-color: #2980b9;
+   color: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   transition: background-color 0.3s ease;
+   text-decoration: none;
+   width: 200px; /* Fixed width for consistency */
+ }
+ .m-option a {
+       display: block;
+       color: #f2f2f2;
+       margin-left: 12px;
+       text-decoration: none;
+       transition: color 0.3s ease;
+     }
+ .m-option:hover {
+   background-color: #1c598a;
+ }
+ 
+ .m-option i {
+   display: block;
+   margin-bottom: 10px;
+   font-size: 32px;
+ }    .selected a {
+   background-color: #514a4a; /* Light grey background */
+   color: #ffffff; /* Black text */
+   border-radius: 5px;
+ }
+ 
+ 
+   </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Academic Management</h1>
+    <ul>
+      <li><a href="challan_mangement.html">Student Fee Management</a></li>
+      <li><a href="employees_salary_pay.html">Pay Employees</a></li>
+      <li><a href="profit_management.html">Annual Profit Evaluation</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="options">
+        <div class="option">
+          <a href="main.html"><i class="fas fa-home"></i> Home</a>
+        </div>
+        <div class="option selected">
+          <a href="academic_management.html"><i class="fas fa-book"></i> Academic</a>
+        </div>
+        <div class="option">
+          <a href="challan_mangement.html"><i class="fas fa-user-graduate"></i>Students</a>
+        </div>
+        <div class="option">
+          <a href="attendance_management.html"><i class="fas fa-user-clock"></i> Attendance</a>
+        </div>
+        <div class="option">
+          <a href="exam_management.html"><i class="fas fa-clipboard-list"></i> Exam</a>
+        </div>
+        <div class="option">
+          <a href="employees_salary_pay.html"><i class="fas fa-users"></i> Employees</a>
+        </div>
+        <div class="option">
+          <a href="challan_mangement.html"><i class="fas fa-money-bill"></i> Finance</a>
+        </div>
+        <div class="option">
+          <a href="profit_management.html"><i class="fas fa-chart-line"></i> Profits</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="welcome">
+        <h2>Welcome to the Academic Management Page</h2>
+        <p>Manage your institution's academic activities efficiently.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

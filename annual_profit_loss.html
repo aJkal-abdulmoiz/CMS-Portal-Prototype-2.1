@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annual Profit/Loss</title>
+  <!-- Load Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+    .metrics {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .metric {
+      background-color: #f2f2f2;
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: 1px solid black;
+      box-shadow: 0 3px 5px rgb(0 0 0 / 0.1);
+    }
+    .charts {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .chart-container {
+      flex: 1;
+      min-width: 300px;
+      margin: 20px;
+    }
+    canvas {
+      max-width: 100%;
+    }
+    .total-profit {
+      background-color: #ffffff;
+      color: #000000;
+      font-weight: bold;
+      font-size: 1.5em;
+      border: 1px solid #e7ebee;
+    }
+  </style>
+</head>
+<body>
+  <div class="metrics">
+    <div class="metric"><b>Revenue: $1,500,000</b></div>
+    <div class="metric"><b>Employee Costs: $400,000</b></div>
+    <div class="metric"><b>Building Costs: $200,000</b></div>
+    <div class="metric total-profit"><b>Total Profit: $700,000</b></div>
+  </div>
+  <div class="container">
+    <h2>Annual Profit/Loss</h2>
+    <div class="charts">
+      <div class="chart-container">
+        <canvas id="profitLossChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2>Monthly Fee Collections</h2>
+        <canvas id="monthlyFeeChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2>Yearly Revenue</h2>
+        <canvas id="yearlyRevenueChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data for the annual profit/loss chart
+    var ctx = document.getElementById('profitLossChart').getContext('2d');
+    var profitLossChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Student Fees', 'Employee Costs', 'Building Costs'],
+        datasets: [{
+          label: 'Revenue/Expense',
+          data: [1500000, -400000, -200000], // Revenue as positive, costs as negative
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(255, 99, 132, 0.9)', 
+            'rgba(255, 206, 86, 0.9)' 
+          ],
+          borderColor: [
+            '#ffffff', // White border
+            '#ffffff', // White border
+            '#ffffff' // White border
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#000000'
+            }
+          }
+        }
+      }
+    });
+
+    // Data for the monthly fee collection chart
+    var monthlyFeeCtx = document.getElementById('monthlyFeeChart').getContext('2d');
+    var monthlyFeeChart = new Chart(monthlyFeeCtx, {
+      type: 'bar',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [{
+          label: 'Monthly Fee Collections',
+          data: [120000, 110000, 130000, 125000, 140000, 135000, 145000, 150000, 140000, 130000, 120000, 110000],
+          backgroundColor: 'rgba(75, 192, 192, 0.9)',
+          borderColor: '#ffffff',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#000000'
+            }
+          }
+        }
+      }
+    });
+
+
+    var yearlyRevenueCtx = document.getElementById('yearlyRevenueChart').getContext('2d');
+    var yearlyRevenueChart = new Chart(yearlyRevenueCtx, {
+      type: 'bar',
+      data: {
+        labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+        datasets: [{
+          label: 'Yearly Revenue',
+          data: [1000000, 1100000, 1200000, 1300000, 1400000, 1500000],
+          backgroundColor: 'rgba(255, 206, 86, 0.9)',
+          borderColor: '#ffffff',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#000000'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
